@@ -18,7 +18,7 @@ WORKDIR /app
 COPY docker_entry.sh /app
 RUN chmod +x /app/docker_entry.sh
 COPY --from=build /src/requirements.txt /src/wheels /src/dist/*.whl /desc/
-RUN pip install --find-links=/desc -r /desc/requirements.txt /desc/ecs_tool*-py3-none-any.whl
+RUN pip install --find-links=/desc -r /desc/requirements.txt /desc/lucyna*-py3-none-any.whl
 RUN rm -rf /desc
 #USER app
 ENTRYPOINT ["/app/docker_entry.sh"]

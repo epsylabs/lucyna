@@ -2,8 +2,9 @@ import arrow
 from rich.layout import Layout
 from rich.table import Table
 
-from ... import DATE_FORMAT
-from ...ui import BaseLayout, EcsPanel, TaskLifecycleStatusEnum
+from ..ui import TaskLifecycleStatusEnum
+from .... import DATE_FORMAT
+from ....ui import BaseLayout, LucynaPanel
 
 
 class TaskLayout(BaseLayout):
@@ -14,7 +15,7 @@ class TaskLayout(BaseLayout):
         title = f"Clusters > {self.data.click_params['cluster']} > {self.params['header_title']} > {self.data.fetcher['task_definition']['taskDefinitionArn'].rsplit('/')[1]} > {self.data.fetcher['task']['taskArn'].rsplit('/')[2]}"
         grid.add_row(title)
 
-        return EcsPanel(grid)
+        return LucynaPanel(grid)
 
     def main_left(self):
         grid = Table.grid()
@@ -47,7 +48,7 @@ class TaskLayout(BaseLayout):
         grid.add_row("Memory: ", self.data.fetcher["task"]["memory"])
         grid.add_row("CPU: ", self.data.fetcher["task"]["cpu"])
 
-        return EcsPanel(grid, title="Basic info")
+        return LucynaPanel(grid, title="Basic info")
 
     def main_right(self):
         grid = Table.grid()
@@ -56,7 +57,7 @@ class TaskLayout(BaseLayout):
         for event in self.data.fetcher["logs"]["events"]:
             grid.add_row(event["message"])
 
-        return EcsPanel(grid, title="Last logs")
+        return LucynaPanel(grid, title="Last logs")
 
     def load(self, data):
         self.data = data
@@ -79,7 +80,7 @@ class ListingLayout(BaseLayout):
         grid.add_column(justify="left", ratio=1)
         grid.add_row(f"Clusters > {self.data.click_params['cluster']} > Tasks")
 
-        return EcsPanel(grid)
+        return LucynaPanel(grid)
 
     def main(self):
         table = Table()
@@ -116,7 +117,7 @@ class LogsLayout(BaseLayout):
         grid.add_column(justify="left", ratio=1)
         grid.add_row(f"Clusters > {self.data.click_params['cluster']} > Tasks > {self.data.click_params['task_id']}")
 
-        return EcsPanel(grid)
+        return LucynaPanel(grid)
 
     def main(self):
         table = Table()

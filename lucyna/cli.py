@@ -3,7 +3,7 @@ from rich.console import Console
 
 from .context import ContextObject
 from .exception import EcsToolException
-from .plugins import cluster, service, task
+from .plugins import ecs
 
 
 @click.group()
@@ -42,9 +42,7 @@ def safe_cli():
         raise
 
 
-cli.add_command(cluster.cli)
-cli.add_command(service.cli)
-cli.add_command(task.cli)
+cli.add_command(ecs.cli)
 
 
 if __name__ == "__main__":

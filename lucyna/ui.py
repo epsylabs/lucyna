@@ -43,7 +43,7 @@ class Ui:
         return self.layout(self.base_layout(), self.layout_params).load(self.data_loader.fetch_data())
 
 
-class EcsPanel(Panel):
+class LucynaPanel(Panel):
     def __init__(self, *args, **kwargs):
         kwargs["style"] = "white on black"
         super().__init__(*args, **kwargs)
@@ -87,14 +87,3 @@ class StatusEnum(Enum):
     ACTIVE = StatusStyle("green", "\u2B24")
     IN_PROGRESS = StatusStyle("yellow", "\u25D6")
     STOPPED = StatusStyle("red", "\u25CB")
-
-
-class TaskLifecycleStatusEnum(Enum):
-    RUNNING = StatusEnum.ACTIVE.value
-    ACTIVATING = StatusEnum.IN_PROGRESS.value
-    DEACTIVATING = StatusEnum.IN_PROGRESS.value
-    PENDING = StatusEnum.IN_PROGRESS.value
-    STOPPING = StatusEnum.IN_PROGRESS.value
-    PROVISIONING = StatusEnum.IN_PROGRESS.value
-    DEPROVISIONING = StatusEnum.IN_PROGRESS.value
-    STOPPED = StatusEnum.STOPPED.value

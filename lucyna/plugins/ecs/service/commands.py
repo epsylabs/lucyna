@@ -1,8 +1,8 @@
 import click
 
-from ...data_loader import DataLoader
-from ...runner import LiveRunner, Runner
-from ...ui import Ui, make_layout
+from ....data_loader import DataLoader
+from ....runner import LiveRunner, Runner
+from ....ui import Ui, make_layout
 from .data import fetch_dashboard, fetch_listing
 from .layouts import DashboardLayout, ListingLayout
 

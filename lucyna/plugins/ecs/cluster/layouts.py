@@ -2,7 +2,7 @@ from enum import Enum
 
 from rich.table import Table
 
-from ...ui import BaseLayout, EcsPanel, StatusEnum
+from ....ui import BaseLayout, LucynaPanel, StatusEnum
 
 
 class ClusterStatusEnum(Enum):
@@ -19,7 +19,7 @@ class ListingLayout(BaseLayout):
         grid.add_column(justify="left", ratio=1)
         grid.add_row(f"Clusters")
 
-        return EcsPanel(grid)
+        return LucynaPanel(grid)
 
     def main(self):
         table = Table()

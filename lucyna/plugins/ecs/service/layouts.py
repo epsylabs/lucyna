@@ -4,8 +4,9 @@ import arrow
 from rich.layout import Layout
 from rich.table import Table
 
-from ... import DATE_FORMAT
-from ...ui import NO_DATA_AVAILABLE, AsciiPlotIntegration, BaseLayout, EcsPanel, StatusEnum, TaskLifecycleStatusEnum
+from ..ui import TaskLifecycleStatusEnum
+from .... import DATE_FORMAT
+from ....ui import NO_DATA_AVAILABLE, AsciiPlotIntegration, BaseLayout, LucynaPanel, StatusEnum
 
 
 @unique
@@ -24,7 +25,7 @@ class DashboardLayout(BaseLayout):
             f"Clusters > {self.data.click_params['cluster']} > Services > {self.data.click_params['service']}",
             self.data.fetcher["services"]["ResponseMetadata"]["HTTPHeaders"]["date"],
         )
-        return EcsPanel(grid)
+        return LucynaPanel(grid)
 
     def basic_info(self):
         service = self.data.fetcher["services"]["services"][0]
@@ -60,11 +61,11 @@ class DashboardLayout(BaseLayout):
 
             grid.add_row("Deployment: ", deployment_status)
 
-        return EcsPanel(grid, title="Basic info")
+        return LucynaPanel(grid, title="Basic info")
 
     def tasks(self):
         if not self.data.fetcher.get("tasks"):
-            return EcsPanel(NO_DATA_AVAILABLE, title="Tasks")
+            return LucynaPanel(NO_DATA_AVAILABLE, title="Tasks")
 
         grid = Table.grid()
         grid.add_column()
@@ -77,7 +78,7 @@ class DashboardLayout(BaseLayout):
                 f"[{status.colour}]{status.icon}[/{status.colour}]  ({task['lastStatus'].lower()})",
             )
 
-        return EcsPanel(grid, title="Tasks")
+        return LucynaPanel(grid, title="Tasks")
 
     def memory(self):
         content = (
@@ -85,7 +86,7 @@ class DashboardLayout(BaseLayout):
             if self.data.fetcher.get("cloudwatch_memory_data")
             else NO_DATA_AVAILABLE
         )
-        return EcsPanel(
+        return LucynaPanel(
             content,
             title="MemoryUtilization",
         )
@@ -96,14 +97,14 @@ class DashboardLayout(BaseLayout):
             if self.data.fetcher.get("cloudwatch_cpu_data")
             else NO_DATA_AVAILABLE
         )
-        return EcsPanel(
+        return LucynaPanel(
             content,
             title="CPUUtilization",
         )
 
     def logs(self):
         if not self.data.fetcher.get("logs"):
-            return EcsPanel(NO_DATA_AVAILABLE, title="Last logs")
+            return LucynaPanel(NO_DATA_AVAILABLE, title="Last logs")
 
         grid = Table.grid()
         grid.add_column()
@@ -111,7 +112,7 @@ class DashboardLayout(BaseLayout):
         for event in self.data.fetcher["logs"]["events"]:
             grid.add_row(event["message"])
 
-        return EcsPanel(grid, title="Last logs")
+        return LucynaPanel(grid, title="Last logs")
 
     def load(self, data):
         self.data = data
@@ -151,7 +152,7 @@ class ListingLayout(BaseLayout):
         grid.add_column(justify="left", ratio=1)
         grid.add_row(f"Clusters > {self.data.click_params['cluster']} > Services")
 
-        return EcsPanel(grid)
+        return LucynaPanel(grid)
 
     def main(self):
         table = Table()
