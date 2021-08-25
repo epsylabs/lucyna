@@ -3,7 +3,7 @@ from rich.layout import Layout
 from rich.table import Table
 
 from .... import DATE_FORMAT
-from ....ui import BaseLayout, LucynaPanel
+from ....ui import BaseLayout, BaseListingLayout, LucynaPanel
 from ..ui import TaskLifecycleStatusEnum
 
 
@@ -74,7 +74,7 @@ class TaskLayout(BaseLayout):
         return self.base_layout
 
 
-class ListingLayout(BaseLayout):
+class ListingLayout(BaseListingLayout):
     def header(self):
         grid = Table.grid(expand=True)
         grid.add_column(justify="left", ratio=1)
@@ -102,13 +102,6 @@ class ListingLayout(BaseLayout):
             )
 
         return table
-
-    def load(self, data):
-        self.data = data
-        self.base_layout["header"].update(self.header())
-        self.base_layout["main"].update(self.main())
-
-        return self.base_layout
 
 
 class LogsLayout(BaseLayout):

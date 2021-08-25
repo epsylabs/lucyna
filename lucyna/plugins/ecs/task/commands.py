@@ -2,7 +2,7 @@ import click
 
 from ....data_loader import DataLoader
 from ....runner import LiveRunner, Runner
-from ....ui import Ui, make_layout
+from ....ui import Ui, make_layout, make_listing_layout
 from .data import fetch_listing, fetch_logs, fetch_run_task, fetch_task
 from .layouts import ListingLayout, LogsLayout, TaskLayout
 
@@ -32,7 +32,7 @@ def show(ctx, **kwargs):
 @click.option("-c", "--cluster", type=str, default="main")
 @click.pass_context
 def listing(ctx, **kwargs):
-    Runner(Ui(make_layout, ListingLayout, DataLoader(ctx.obj, fetch_listing, kwargs))).run()
+    Runner(Ui(make_listing_layout, ListingLayout, DataLoader(ctx.obj, fetch_listing, kwargs))).run()
 
 
 @click.command(help="Show logs for task")

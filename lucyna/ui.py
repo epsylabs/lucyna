@@ -7,6 +7,7 @@ from rich.console import RenderGroup
 from rich.jupyter import JupyterMixin
 from rich.layout import Layout
 from rich.panel import Panel
+from rich.table import Table
 from rich.text import Text
 
 NO_DATA_AVAILABLE = Text("No data available", style="bold red")
@@ -22,6 +23,10 @@ def make_layout():
     return layout
 
 
+def make_listing_layout():
+    return Table.grid()
+
+
 class BaseLayout:
     def __init__(self, base_layout, params=None):
         self.base_layout = base_layout
@@ -30,6 +35,16 @@ class BaseLayout:
 
     def load(self, data):
         raise NotImplemented
+
+
+class BaseListingLayout(BaseLayout):
+    def load(self, data):
+        self.data = data
+
+        self.base_layout.add_row(self.header())
+        self.base_layout.add_row(self.main())
+
+        return self.base_layout
 
 
 class Ui:
