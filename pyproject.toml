@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "lucyna"
 version = "0.11.0"
-description = "ecs-tool tries to eliminate common caveats for your day-to-day work with Elastic Container Service (ECS)."
+description = "Lucyna is a library that tries to help you with your daily tasks with AWS ECS and AWS Lambda (more might come in future)."
 authors = ["Daniel Ancuta <whisller@gmail.com>"]
 license = "MIT"
 readme = "README.md"
@@ -18,7 +18,7 @@ classifiers = [
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3 :: Only",
 ]
-keywords = ["aws", "ecs", "cli"]
+keywords = ["aws", "ecs", "cli", "lambda"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
