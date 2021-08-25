@@ -1,4 +1,5 @@
 import boto3
+from botocore.config import Config
 
 
 class ContextObject:
@@ -26,3 +27,7 @@ class ContextObject:
     @property
     def aws_account_id(self):
         return boto3.client("sts").get_caller_identity().get("Account")
+
+    def lambda_function(self, region=None):
+        config = Config(region_name=region) if region else None
+        return boto3.client("lambda", config=config)

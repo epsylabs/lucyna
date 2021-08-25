@@ -3,7 +3,7 @@ from rich.console import Console
 
 from .context import ContextObject
 from .exception import EcsToolException
-from .plugins import ecs
+from .plugins import ecs, lambda_function
 
 
 @click.group()
@@ -43,6 +43,7 @@ def safe_cli():
 
 
 cli.add_command(ecs.cli)
+cli.add_command(lambda_function.cli)
 
 
 if __name__ == "__main__":
