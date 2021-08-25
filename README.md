@@ -21,6 +21,7 @@ Lucyna is a library that tries to help you with your daily tasks with AWS ECS an
 * Show single task, displays information about running task (refreshed automatically)
 * Show task's logs (refreshed automatically)
 ### Lambda
+* Listing of all lambdas
 
 More detailed information about available commands below.
 
@@ -117,6 +118,16 @@ lucyna ecs task logs [OPTIONS] TASK_ID
 Options:
   -c, --cluster TEXT
 ```
+
+### Lambda
+#### List of available lambdas
+```shell
+lucyna lambda list [OPTIONS]
+
+Options:
+  --region TEXT  Region e.g. us-east-2
+```
+
 
 ## Can I use grep?
 Yes! All commands results (but dashboards) can be filtered with `grep`
