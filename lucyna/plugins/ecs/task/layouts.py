@@ -2,9 +2,9 @@ import arrow
 from rich.layout import Layout
 from rich.table import Table
 
-from ..ui import TaskLifecycleStatusEnum
 from .... import DATE_FORMAT
 from ....ui import BaseLayout, LucynaPanel
+from ..ui import TaskLifecycleStatusEnum
 
 
 class TaskLayout(BaseLayout):

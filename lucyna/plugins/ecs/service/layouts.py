@@ -4,9 +4,9 @@ import arrow
 from rich.layout import Layout
 from rich.table import Table
 
-from ..ui import TaskLifecycleStatusEnum
 from .... import DATE_FORMAT
 from ....ui import NO_DATA_AVAILABLE, AsciiPlotIntegration, BaseLayout, LucynaPanel, StatusEnum
+from ..ui import TaskLifecycleStatusEnum
 
 
 @unique
