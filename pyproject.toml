@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "lucyna"
-version = "0.11.1"
+version = "0.1000.1"
 description = "Lucyna is a library that tries to help you with your daily tasks with AWS ECS and AWS Lambda (more might come in future)."
 authors = ["Daniel Ancuta <whisller@gmail.com>"]
 license = "MIT"
