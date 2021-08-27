@@ -4,8 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.11.0] - XXXX-XX-XX
+## [0.11.0] - 2021-08-25
+### Added
+- Allow to list all available lambda functions
 
+### Changed
+- Moved to new repository and renamed `ecs-tool` to `lucyna` :)
+
+### Fixed
+- Properly display lists, view is not cut
 
 ## [0.10.3] - 2021-08-05
 ### Added
