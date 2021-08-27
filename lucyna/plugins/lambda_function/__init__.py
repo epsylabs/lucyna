@@ -6,7 +6,7 @@ from .commands import listing
 @click.group(name="lambda")
 def cli():
     """
-    Lambda [listing]
+    Lambda [list]
     """
 
 

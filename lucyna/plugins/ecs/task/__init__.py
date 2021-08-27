@@ -7,7 +7,7 @@ from .commands import listing, logs, run, show
 @click.pass_context
 def cli(ctx):
     """
-    Task [listing, show, run, logs]
+    Task [list, show, run, logs]
     """
 
 
