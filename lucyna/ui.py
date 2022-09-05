@@ -67,7 +67,7 @@ class LucynaPanel(Panel):
 class AsciiPlotIntegration(JupyterMixin):
     def __init__(self, data):
         y_values, x_ticks = self._prepare_data(data)
-        chart = asciiize(y_values, inter_points_margin=4, x_ticks=x_ticks)
+        chart = asciiize(y_values, inter_points_margin=4, x_axis_tick_labels=x_ticks)
 
         decoder = AnsiDecoder()
         self.rich_chart = RenderGroup(*decoder.decode(chart))
