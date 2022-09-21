@@ -3,7 +3,7 @@ from enum import Enum, unique
 
 from asciiplot import asciiize
 from rich.ansi import AnsiDecoder
-from rich.console import RenderGroup
+from rich.console import Group
 from rich.jupyter import JupyterMixin
 from rich.layout import Layout
 from rich.panel import Panel
@@ -70,7 +70,7 @@ class AsciiPlotIntegration(JupyterMixin):
         chart = asciiize(y_values, inter_points_margin=4, x_axis_tick_labels=x_ticks)
 
         decoder = AnsiDecoder()
-        self.rich_chart = RenderGroup(*decoder.decode(chart))
+        self.rich_chart = Group(*decoder.decode(chart))
 
     def __rich_console__(self, console, options):
         yield self.rich_chart
